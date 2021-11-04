@@ -14,17 +14,12 @@ import store.Products.Product;
  */
 public final class Food extends Perishable {
 
-    @Override
-    public String toString() {
-        return "Food{" + '}';
-    }
-
-    public LocalDate getExpirationDate() {
-        return ExpirationDate;
-    }
-
-    public void setExpirationDate(LocalDate ExpirationDate) {
-        this.ExpirationDate = ExpirationDate;
+    //constructor
+    public Food(String name, String brand, double price, LocalDate expirationDate) {
+        super(name, brand, price, expirationDate);
+        ExpirationDate = expirationDate;
+        this.discountPercent = setDiscountInPercent();
+        this.discount = Product.getValueOfDiscount(price, discountPercent);
     }
 
     @Override
@@ -35,22 +30,6 @@ public final class Food extends Perishable {
         }
         System.out.print(this.name.toLowerCase() + " - " + this.brand);
         System.out.println();
+        System.out.println();
     }
-
-    @Override
-    public int setDiscountInPercent() {
-        return super.setDiscountInPercent();
-    }
-    //constructor
-    public Food(String name, String brand, double price, LocalDate expirationDate) {
-        super(name, brand, price, expirationDate);
-         ExpirationDate = expirationDate;
-        this.discountPercent = setDiscountInPercent();
-        this.discount = Product.getValueOfDiscount(price, discountPercent);
-    }
-    
-    
-    
 }
-
-

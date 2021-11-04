@@ -16,6 +16,26 @@ import store.Purchases.Cashier;
  */
 public final class Appliance extends Product {
 
+    private String model;
+    private LocalDate productionDate;
+    private String weight;
+
+    //constructors
+    public Appliance(double price) {
+        super(price);
+
+    }
+    public Appliance(String name, String brand, double price,
+            String model, LocalDate productionDate, String weight) {
+        super(name, brand, price);
+        this.model = model;
+        this.productionDate = productionDate;
+        this.weight = weight;
+        this.discountPercent = setDiscountInPercent();
+        this.discount = Product.getValueOfDiscount(price, discountPercent);
+    }
+
+    //getters and setters
     public String getModel() {
         return model;
     }
@@ -40,38 +60,15 @@ public final class Appliance extends Product {
         this.weight = weight;
     }
 
-    private String model;
-    private LocalDate productionDate;
-    private String weight;
-
-    public Appliance(double price) {
-        super(price);
-
-    }
-
-    
     @Override
     public void printProduct() {
 
         System.out.println(this.name + " " + this.brand + " " + this.model);
-        System.out.println();
 
     }
-
-    public Appliance(String name, String brand, double price,
-            String model, LocalDate productionDate, String weight) {
-        super(name, brand, price);
-        this.model = model;
-        this.productionDate = productionDate;
-        this.weight = weight;
-        this.discountPercent = setDiscountInPercent();
-        this.discount = Product.getValueOfDiscount(price, discountPercent);
-    }
-
-    /// <summary>
-    /// Overrides Product.SetDiscountInPercent(). There is a 5% discount on all appliances that cost above $999 and are purchased during the weekend
-    /// </summary>
-    /// <returns></returns>
+    
+    // Overrides Product.SetDiscountInPercent(). There is a 5% discount on all 
+    //appliances that cost above $999 and are purchased during the weekend  
     @Override
     public int setDiscountInPercent() {
         LocalDateTime dateOfPurchase = Cashier.dateOfPurchase;
@@ -81,7 +78,6 @@ public final class Appliance extends Product {
             disc = 5;
 
         }
-
         this.discountPercent = disc;
         return disc;
     }

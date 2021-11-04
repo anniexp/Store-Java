@@ -14,23 +14,6 @@ import store.Products.Product;
  */
 public final class Beverage extends Perishable {
 
-    public LocalDate getExpirationDate() {
-        return ExpirationDate;
-    }
-
-    public void setExpirationDate(LocalDate ExpirationDate) {
-        this.ExpirationDate = ExpirationDate;
-    }
-
-    @Override
-    public String toString() {
-        if (this.name.endsWith("s")) {
-            this.name = this.name.substring(0, this.name.length() - 1);
-        }
-
-        return (this.name.toLowerCase() + "  " + this.brand);
-    }
-
     @Override
     public void printProduct() {
         //if the name is in plural verb - remove the s to make the mono
@@ -41,13 +24,6 @@ public final class Beverage extends Perishable {
         System.out.println();
 //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public int setDiscountInPercent() {
-        return super.setDiscountInPercent(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public LocalDate ExpirationDate;
 
     public Beverage(String name, String brand, double price,
             LocalDate expirationDate) {

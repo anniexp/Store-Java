@@ -5,7 +5,6 @@
  */
 package store.Purchases;
 
-import java.util.Random;
 import store.Products.Product;
 
 /**
@@ -13,6 +12,11 @@ import store.Products.Product;
  * @author Lenovo
  */
 public class CartProduct {
+
+    public CartProduct(Product product, int quantity) {
+        this.Product = product;
+        this.quantity = setQuantity();
+    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
@@ -29,18 +33,7 @@ public class CartProduct {
     public Product Product;
     //constructors
 
-    public CartProduct() {
-    }
-
-    public CartProduct(Product product, int quantity) {
-        this.Product = product;
-        this.quantity = setQuantity();
-    }
-
-    /// <summary>
-    /// sets the number of each product ( )
-    /// </summary>
-    /// <returns></returns>
+    // sets the number of each product
     public static int setQuantity() {
         int min = 1;
         int max = 5;
@@ -50,18 +43,12 @@ public class CartProduct {
         return quantity;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="cart"></param>
-    /// <returns></returns>
     public static double sumP(CartProduct cart) {
         double sum;
 
         sum = cart.quantity * cart.Product.price;
 
-        
-        return Math.round(sum*100.0)/100.0;
+        return Math.round(sum * 100.0) / 100.0;
     }
 
 }
