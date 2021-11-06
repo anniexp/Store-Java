@@ -17,7 +17,7 @@ public final class Food extends Perishable {
     //constructor
     public Food(String name, String brand, double price, LocalDate expirationDate) {
         super(name, brand, price, expirationDate);
-        ExpirationDate = expirationDate;
+        this.expirationDate = expirationDate;
         this.discountPercent = setDiscountInPercent();
         this.discount = Product.getValueOfDiscount(price, discountPercent);
     }

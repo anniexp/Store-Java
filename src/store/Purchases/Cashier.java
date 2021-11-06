@@ -8,7 +8,6 @@ package store.Purchases;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import store.Store;
 
 /**
  *
@@ -16,8 +15,9 @@ import store.Store;
  */
 public class Cashier {
 
-    public static LocalDateTime dateOfPurchase = Store.dateOfPurchase;
+    private static LocalDateTime dateOfPurchase;
 
+    //  public static LocalDateTime dateOfPurchase = Store.dateOfPurchase;
     public static LocalDateTime getDateOfPurchase() {
         return dateOfPurchase;
     }
@@ -98,7 +98,6 @@ public class Cashier {
         double sumDiscount = 0;
         sumDiscount = cartProduct.Product.discount * cartProduct.quantity;
 
-        //return Math.round(sumDiscount*100.0)/100.0;
         return sumDiscount;
     }
 }

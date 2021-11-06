@@ -18,20 +18,8 @@ public class CartProduct {
         this.quantity = setQuantity();
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public Product getProduct() {
-        return Product;
-    }
     public int quantity;
     public Product Product;
-    //constructors
 
     // sets the number of each product
     public static int setQuantity() {

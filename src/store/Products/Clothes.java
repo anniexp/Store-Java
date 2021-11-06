@@ -26,26 +26,10 @@ public final class Clothes extends Product {
         this.discount = Product.getValueOfDiscount(price, discountPercent);
     }
 
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
-
-    public Size getSize() {
-        return size;
-    }
-
-    public void setSize(Size size) {
-        this.size = size;
-    }
-
     // Overrides Product.SetDiscountInPercent(). There is a 10% discount on all clothes bought during the working days
     @Override
     public int setDiscountInPercent() {
-        LocalDateTime dateOfPurchase = Cashier.dateOfPurchase;
+        LocalDateTime dateOfPurchase = Cashier.getDateOfPurchase();
         int disc = 0;
 
         if (dateOfPurchase.getDayOfWeek().equals(DayOfWeek.MONDAY) || dateOfPurchase.getDayOfWeek().equals(DayOfWeek.TUESDAY)

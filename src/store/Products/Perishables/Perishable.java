@@ -8,8 +8,7 @@ package store.Products.Perishables;
 import store.Products.Product;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-import store.Store;
+import static store.Purchases.Cashier.getDateOfPurchase;
 
 /**
  *
@@ -17,33 +16,26 @@ import store.Store;
  */
 public abstract class Perishable extends Product {
 
-    public LocalDate getExpirationDate() {
-        return ExpirationDate;
-    }
-
-    public void setExpirationDate(LocalDate ExpirationDate) {
-        this.ExpirationDate = ExpirationDate;
-    }
-    public LocalDate ExpirationDate;
+    public LocalDate expirationDate;
 
     protected Perishable(String name, String brand, double price,
             LocalDate expirationDate) {
         super(name, brand, price);
-        ExpirationDate = expirationDate;
+        this.expirationDate = expirationDate;
         this.discountPercent = setDiscountInPercent();
         this.discount = Product.getValueOfDiscount(price, discountPercent);
     }
 
     @Override
     public final int setDiscountInPercent() {
-        LocalDateTime dateAndTimeOfPurchase = Store.dateOfPurchase;
+        LocalDateTime dateAndTimeOfPurchase = getDateOfPurchase();
         //get only the date 
         LocalDate dateOfPurchase = dateAndTimeOfPurchase.toLocalDate();
         int disc = 0;
         //not sure if in the assigegment to be with the 5th day or not
-        if ((dateOfPurchase.isAfter(ExpirationDate.minusDays(5)) || dateOfPurchase.isEqual(ExpirationDate.minusDays(5)))) {
+        if ((dateOfPurchase.isAfter(expirationDate.minusDays(5)) || dateOfPurchase.isEqual(expirationDate.minusDays(5)))) {
             disc = 10;
-            if (dateOfPurchase.isEqual(ExpirationDate)) {
+            if (dateOfPurchase.isEqual(expirationDate)) {
                 disc = 50;
             }
         }

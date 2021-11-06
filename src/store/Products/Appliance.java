@@ -8,7 +8,7 @@ package store.Products;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import store.Purchases.Cashier;
+import static store.Purchases.Cashier.getDateOfPurchase;
 
 /**
  *
@@ -25,6 +25,7 @@ public final class Appliance extends Product {
         super(price);
 
     }
+
     public Appliance(String name, String brand, double price,
             String model, LocalDate productionDate, String weight) {
         super(name, brand, price);
@@ -36,42 +37,18 @@ public final class Appliance extends Product {
     }
 
     //getters and setters
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public LocalDate getProductionDate() {
-        return productionDate;
-    }
-
-    public void setProductionDate(LocalDate productionDate) {
-        this.productionDate = productionDate;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
     @Override
     public void printProduct() {
 
         System.out.println(this.name + " " + this.brand + " " + this.model);
 
     }
-    
+
     // Overrides Product.SetDiscountInPercent(). There is a 5% discount on all 
     //appliances that cost above $999 and are purchased during the weekend  
     @Override
     public int setDiscountInPercent() {
-        LocalDateTime dateOfPurchase = Cashier.dateOfPurchase;
+        LocalDateTime dateOfPurchase = getDateOfPurchase();
         int disc = 0;
         if ((dateOfPurchase.getDayOfWeek().equals(DayOfWeek.SATURDAY)
                 || dateOfPurchase.getDayOfWeek().equals(DayOfWeek.SUNDAY)) && this.price > 999) {
