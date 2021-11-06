@@ -1,5 +1,10 @@
 # Store
 
+For the creation of the application is used NetBeans IDE and library JDK 1.8.
+
+
+
+Description of the content of Store :
 
 In a store you can buy different products - food, beverages, clothes, appliances.
 
