@@ -9,37 +9,12 @@ package store.Products;
  *
  * @author Lenovo
  */
+/// there are only standard sizes available from XS to XL
+public enum Size {
+    XS,
+    S,
+    M,
+    L,
+    XL;
 
-
-    
-    /// there are only standard sizes available from XS to XL
- public enum Size
-    {
-        XS,
-        S,
-        M,
-        L,
-        XL;
-
-    public static Size getXS() {
-        return XS;
-    }
-
-    public static Size getS() {
-        return S;
-    }
-
-    public static Size getM() {
-        return M;
-    }
-
-    public static Size getL() {
-        return L;
-    }
-
-    public static Size getXL() {
-        return XL;
-    }
 }
-
-   
